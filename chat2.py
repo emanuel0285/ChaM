@@ -60,8 +60,9 @@ def get_answer(question):
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
+    question_count = 1  # Initialize a counter for question inputs
     while True:
-        question = st.text_input("> ", key="question-input")  # Unique key for question input
+        question = st.text_input("> ", key=f"question-input-{question_count}")
 
         if question.lower() in ['help', 'h']:
             display_help()
@@ -82,6 +83,7 @@ def run_chatbot():
 
         st.write(answer)
         conversation.append((question, answer))
+        question_count += 1  # Increment the question counter
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
