@@ -101,5 +101,4 @@ def display_help():
     st.write("Ask me a machine learning question and I'll try my best to answer it.")
     st.write("Type 'help' or 'h' to see this message again.")
     pst.write("Type 'exit' or 'e' to quit.")
-
-st.code(run_chatbot)
+run_chatbot()
