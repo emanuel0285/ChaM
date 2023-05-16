@@ -1,0 +1,10 @@
+[server]
+headless = true
+port = $PORT
+enableCORS = false
+
+[theme]
+primaryColor = "#008080"
+
+[logger]
+level = "error"
