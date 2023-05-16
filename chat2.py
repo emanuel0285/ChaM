@@ -59,7 +59,7 @@ def get_answer(question):
 # Define a function to run the chatbot
 def run_chatbot():
     # Print a welcome message
-    st.write("Hi, I'm a chatbot. How can I help you?")
+    st.write("Hi, I'm an AI chatbot. How can I help you?")
     conversation = [] # initialize an empty list to store the conversation
     while True:
         # Get a question from the user
@@ -102,4 +102,4 @@ def display_help():
     st.write("Type 'help' or 'h' to see this message again.")
     st.write("Type 'exit' or 'e' to quit.")
 
-display_help()
+run_chatbot()
