@@ -60,8 +60,10 @@ def get_answer(question):
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
+    question_key = "question-input"
+    help_key = "help-input"
     while True:
-        question = st.text_input("> ", key="question-input")
+        question = st.text_input("> ", key=question_key)
 
         if question.lower() in ['help', 'h']:
             display_help()
