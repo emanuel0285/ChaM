@@ -58,7 +58,7 @@ def get_answer(question):
 
 # Define a function to run the chatbot
 def run_chatbot():
-    #st.write("Hi, I'm a chatbot. How can I help you?")
+    st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
 
     form_key = 'question-form'
@@ -86,8 +86,6 @@ def run_chatbot():
         for q, a in conversation:
             file.write(f"{q}\t{a}\n")
 
-st.write("This is my chatbot app!")
-run_chatbot()
 
 # Define a function to display the help message
 def display_help():
@@ -96,5 +94,5 @@ def display_help():
     st.write("2. Type 'help' or 'h' to see this message again.")
     st.write("3. Type 'exit' or 'e' to quit.")
 
-# Run the chatbot
+
 run_chatbot()
