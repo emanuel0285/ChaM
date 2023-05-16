@@ -61,8 +61,9 @@ def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
 
-    with st.form(key='question-form'):
-        question = st.text_input(">", key='question-input')
+    form_key = 'question-form'
+    with st.form(key=form_key):
+        question = st.text_input(">", key=f"{form_key}-input")
         form_submit = st.form_submit_button("Submit")
 
         if form_submit:
