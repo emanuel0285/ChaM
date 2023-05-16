@@ -86,7 +86,6 @@ def run_chatbot():
         for q, a in conversation:
             file.write(f"{q}\t{a}\n")
 
-
 # Define a function to display the help message
 def display_help():
     st.write("I'm a chatbot that can answer your questions. Here are some things you can ask me:")
