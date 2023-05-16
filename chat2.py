@@ -60,17 +60,20 @@ def get_answer(question):
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
+    question_input = st.empty()
     while True:
-        question = st.text_input("> ", key="question-input")
+        question = question_input.text_input("> ", key="question-input")
 
         if question.lower() in ['help', 'h']:
             display_help()
             conversation.append((question, "Help"))
+            question_input.empty()  # Clear the input value
             continue
 
         if question.lower() in ['exit', 'e']:
             st.write("Goodbye!")
             conversation.append((question, "Goodbye"))
+            question_input.empty()  # Clear the input value
             break
 
         answer = get_answer(question)
@@ -78,10 +81,12 @@ def run_chatbot():
         if answer is None:
             st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
             conversation.append((question, "Unknown"))
+            question_input.empty()  # Clear the input value
             continue
 
         st.write(answer)
         conversation.append((question, answer))
+        question_input.empty()  # Clear the input value
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
