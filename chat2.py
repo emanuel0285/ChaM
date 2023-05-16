@@ -102,4 +102,4 @@ def display_help():
     st.write("Type 'help' or 'h' to see this message again.")
     pst.write("Type 'exit' or 'e' to quit.")
 
-st.code(run_chatbot())
+st.code(run_chatbot)
