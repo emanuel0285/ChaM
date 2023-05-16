@@ -61,32 +61,25 @@ def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
     question_input = st.empty()
-    while True:
-        question = question_input.text_input("> ", key="question-input")
+    form = st.form(key='question-form')
+    question = form.text_input(">", key="question-input")
+    form_submit = form.form_submit_button("Submit")
 
+    if form_submit:
         if question.lower() in ['help', 'h']:
             display_help()
             conversation.append((question, "Help"))
-            question_input.empty()  # Clear the input value
-            continue
-
-        if question.lower() in ['exit', 'e']:
+        elif question.lower() in ['exit', 'e']:
             st.write("Goodbye!")
             conversation.append((question, "Goodbye"))
-            question_input.empty()  # Clear the input value
-            break
-
-        answer = get_answer(question)
-
-        if answer is None:
-            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-            conversation.append((question, "Unknown"))
-            question_input.empty()  # Clear the input value
-            continue
-
-        st.write(answer)
-        conversation.append((question, answer))
-        question_input.empty()  # Clear the input value
+        else:
+            answer = get_answer(question)
+            if answer is None:
+                st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+                conversation.append((question, "Unknown"))
+            else:
+                st.write(answer)
+                conversation.append((question, answer))
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
