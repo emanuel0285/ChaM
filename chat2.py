@@ -100,6 +100,6 @@ def display_help():
     st.write("I'm a chatbot that can answer your machine learning questions based on the data I have been trained on. Here are some things you can ask me:\n")
     st.write("Ask me a machine learning question and I'll try my best to answer it.")
     st.write("Type 'help' or 'h' to see this message again.")
-    pst.write("Type 'exit' or 'e' to quit.")
+    st.write("Type 'exit' or 'e' to quit.")
 
 display_help()
