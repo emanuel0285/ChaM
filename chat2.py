@@ -60,25 +60,26 @@ def get_answer(question):
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
-    form_key = 'question-form'
-    question = st.text_input(">", key=form_key)
-    form_submit = st.form_submit_button("Submit")
 
-    if form_submit:
-        if question.lower() in ['help', 'h']:
-            display_help()
-            conversation.append((question, "Help"))
-        elif question.lower() in ['exit', 'e']:
-            st.write("Goodbye!")
-            conversation.append((question, "Goodbye"))
-        else:
-            answer = get_answer(question)
-            if answer is None:
-                st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-                conversation.append((question, "Unknown"))
+    with st.form(key='question-form'):
+        question = st.text_input(">", key='question-input')
+        form_submit = st.form_submit_button("Submit")
+
+        if form_submit:
+            if question.lower() in ['help', 'h']:
+                display_help()
+                conversation.append((question, "Help"))
+            elif question.lower() in ['exit', 'e']:
+                st.write("Goodbye!")
+                conversation.append((question, "Goodbye"))
             else:
-                st.write(answer)
-                conversation.append((question, answer))
+                answer = get_answer(question)
+                if answer is None:
+                    st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+                    conversation.append((question, "Unknown"))
+                else:
+                    st.write(answer)
+                    conversation.append((question, answer))
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
