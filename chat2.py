@@ -97,10 +97,10 @@ def run_chatbot():
 
 # Define a function to display the help message
 def display_help():
-    st.write("I'm a chatbot that can answer your machine learning questions based on the data I have been trained on. Here are some things you can ask me:\n")
-    st.write("Ask me a machine learning question and I'll try my best to answer it.")
-    st.write("Type 'help' or 'h' to see this message again.")
-    st.write("Type 'exit' or 'e' to quit.")
+    st.write("I'm a chatbot that can answer your questions. Here are some things you can ask me:")
+    st.write("1. Ask me a question, and I'll try my best to answer it.")
+    st.write("2. Type 'help' or 'h' to see this message again.")
+    st.write("3. Type 'exit' or 'e' to quit.")
 
 # Run the chatbot
 run_chatbot()
