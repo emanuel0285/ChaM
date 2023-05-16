@@ -60,8 +60,10 @@ def get_answer(question):
 def run_chatbot():
     st.write("Hi, I'm an AI chatbot. How can I help you?")
     conversation = []
+    input_counter = 0  # Counter for generating unique keys
     while True:
-        question = st.text_input("> ", key="question-input")  # Unique key for question input
+        input_counter += 1
+        question = st.text_input("> ", key=f"question-input-{input_counter}")  # Unique key for question input
 
         if question.lower() in ['help', 'h']:
             display_help()
