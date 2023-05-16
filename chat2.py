@@ -59,11 +59,11 @@ def get_answer(question):
 # Define a function to run the chatbot
 def run_chatbot():
     # Print a welcome message
-    st.write("Hi, I'm an AI chatbot. How can I help you?")
+    st.write("Hi, I'm an AI chatbot. How can I help you?", key='welcome')
     conversation = [] # initialize an empty list to store the conversation
     while True:
         # Get a question from the user
-        question = st.text_input("Enter your question", key="user-question")
+        question = st.text_input("> ", key='input')
 
         # Check if the user wants help
         if question.lower() in ['help', 'h']:
@@ -73,7 +73,7 @@ def run_chatbot():
 
         # Check if the user wants to exit
         if question.lower() in ['exit', 'e']:
-            st.write("Goodbye!")
+            st.write("Goodbye!", key='goodbye')
             conversation.append((question, "Goodbye"))
             break
 
@@ -82,19 +82,19 @@ def run_chatbot():
 
         # Check if the answer is None
         if answer is None:
-            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.", key='unknown')
             conversation.append((question, "Unknown"))
             continue
 
         # Print the answer
-        st.write(answer)
+        st.write(answer, key='answer')
         conversation.append((question, answer)) # store the question-answer pair in the conversation list
     
     # save the conversation to a file
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
             file.write(f"{q}\t{a}\n")
-
+            
 # Define a function to display the help message
 def display_help():
     st.write("I'm a chatbot that can answer your questions. Here are some things you can ask me:")
