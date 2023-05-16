@@ -63,7 +63,7 @@ def run_chatbot():
     conversation = [] # initialize an empty list to store the conversation
     while True:
         # Get a question from the user
-        question = st.text_input("> ")
+        question = st.text_input("Enter your question", key="user-question")
 
         # Check if the user wants help
         if question.lower() in ['help', 'h']:
@@ -102,4 +102,5 @@ def display_help():
     st.write("Type 'help' or 'h' to see this message again.")
     st.write("Type 'exit' or 'e' to quit.")
 
+# Run the chatbot
 run_chatbot()
