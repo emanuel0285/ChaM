@@ -58,42 +58,37 @@ def get_answer(question):
 
 # Define a function to run the chatbot
 def run_chatbot():
-    # Print a welcome message
-    st.write("Hi, I'm an AI chatbot. How can I help you?", key='welcome')
-    conversation = [] # initialize an empty list to store the conversation
+    st.write("Hi, I'm an AI chatbot. How can I help you?")
+    conversation = []
     while True:
-        # Get a question from the user
-        question = st.text_input("> ", key='input')
+        question = st.text_input("> ", key="question-input")  # Unique key for question input
 
-        # Check if the user wants help
         if question.lower() in ['help', 'h']:
             display_help()
             conversation.append((question, "Help"))
             continue
 
-        # Check if the user wants to exit
         if question.lower() in ['exit', 'e']:
-            st.write("Goodbye!", key='goodbye')
+            st.write("Goodbye!", key="goodbye")
             conversation.append((question, "Goodbye"))
             break
 
-        # Get the answer from the chatbot
         answer = get_answer(question)
 
-        # Check if the answer is None
         if answer is None:
-            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.", key='unknown')
+            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.", key="unknown")
             conversation.append((question, "Unknown"))
             continue
 
-        # Print the answer
-        st.write(answer, key='answer')
-        conversation.append((question, answer)) # store the question-answer pair in the conversation list
-    
-    # save the conversation to a file
+        st.write(answer, key="answer")
+        conversation.append((question, answer))
+
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
             file.write(f"{q}\t{a}\n")
+
+st.write("This is my Streamlit app!")
+run_chatbot()
             
 # Define a function to display the help message
 def display_help():
