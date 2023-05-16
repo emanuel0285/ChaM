@@ -58,7 +58,7 @@ def get_answer(question):
 
 # Define a function to run the chatbot
 def run_chatbot():
-    st.write("Hi, I'm a chatbot. How can I help you?")
+    #st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
 
     form_key = 'question-form'
