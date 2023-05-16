@@ -58,12 +58,10 @@ def get_answer(question):
 
 # Define a function to run the chatbot
 def run_chatbot():
-    st.write("Hi, I'm an AI chatbot. How can I help you?")
+    st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
-    question_key = 0  # Initialize a counter for question keys
     while True:
-        question = st.text_input("> ", key=f"question-input-{question_key}")  # Unique key for each question input
-        question_key += 1  # Increment the question key counter
+        question = st.text_input("> ", key="question-input")  # Unique key for question input
 
         if question.lower() in ['help', 'h']:
             display_help()
@@ -71,25 +69,25 @@ def run_chatbot():
             continue
 
         if question.lower() in ['exit', 'e']:
-            st.write("Goodbye!", key="goodbye")
+            st.write("Goodbye!")
             conversation.append((question, "Goodbye"))
             break
 
         answer = get_answer(question)
 
         if answer is None:
-            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.", key="unknown")
+            st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
             conversation.append((question, "Unknown"))
             continue
 
-        st.write(answer, key="answer")
+        st.write(answer)
         conversation.append((question, answer))
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
             file.write(f"{q}\t{a}\n")
 
-st.write("This is my Streamlit app!")
+st.write("This is my chatbot app!")
 run_chatbot()
             
 # Define a function to display the help message
