@@ -61,9 +61,10 @@ def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
     question_input = st.empty()
-    form = st.form(key='question-form')
-    question = form.text_input(">", key="question-input")
-    form_submit = form.form_submit_button("Submit")
+    form_key = 'question-form'
+    form_id = st.empty().form_key
+    question = form_id.text_input(">", key=f"{form_key}-{form_id}")
+    form_submit = form_id.form_submit_button("Submit")
 
     if form_submit:
         if question.lower() in ['help', 'h']:
@@ -87,7 +88,7 @@ def run_chatbot():
 
 st.write("This is my chatbot app!")
 run_chatbot()
-            
+
 # Define a function to display the help message
 def display_help():
     st.write("I'm a chatbot that can answer your questions. Here are some things you can ask me:")
