@@ -93,14 +93,14 @@ def run_chatbot():
             elif question.lower() in ['report', 'r']:
                 generate_report()
                 conversation.append((question, "Report Generated"))
-            else:
-                answer = get_answer(question)
-            if answer is None:
-               st.write(default_answer)
-               conversation.append((question, default_answer))
-            else:
-               st.write(answer)
+            elif answer = get_answer(question)
+            st.write(answer)
                conversation.append((question, answer))
+          
+            else:
+                st.write(default_answer)
+                conversation.append((question, default_answer))
+               
                     
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
