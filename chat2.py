@@ -92,8 +92,8 @@ def run_chatbot():
                 generate_report()
                 conversation.append((question, "Report Generated"))
             else:
-                answer = get_answer(question)
-            if answer is not None:
+                answer1 = get_answer(question)
+            if answer1 is not None:
                st.write(answer)
                conversation.append((question, answer))
             else:
