@@ -97,11 +97,10 @@ def run_chatbot():
                     st.write(answer)
                     conversation.append((question, answer))
                 else:
-                    st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-                    conversation.append((question, "Unknown")
-                    
-   
-
+                    default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
+                    st.write(default_answer)
+                    conversation.append((question, "Unknown"))
+               
 # Define a function to display the help message
 def display_help():
     st.write("I'm a chatbot that can answer your questions. Here are some things you can ask me:")
