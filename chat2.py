@@ -99,7 +99,7 @@ def run_chatbot():
 
                 if not match.empty:
                     # Get the answer from the dataset
-                    answer = match.iloc[0]['answer']
+                    answer = match.iloc[0]['Answer']
                     st.write(answer)
                     conversation.append((question, answer))
                 else:
