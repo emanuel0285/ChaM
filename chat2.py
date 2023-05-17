@@ -70,12 +70,7 @@ def generate_report():
     st.write("Report Name:", report_data["Report Name"])
     st.write("Total Questions:", report_data["Total Questions"])
     st.write("Unique Answers:", report_data["Unique Answers"])
-def get_answer(question):
-    answer = df[df['question'] == question]['answer'].values
-    if len(answer) > 0:
-        return answer[0]
-    else:
-        return None
+
 # Define a function to run the chatbot
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
@@ -98,12 +93,14 @@ def run_chatbot():
                 conversation.append((question, "Report Generated"))
             else:
                 answer = get_answer(question)
-            if answer is None:
-                st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-                conversation.append((question, "Unknown"))
-            else:
-                 st.write(answer)
-                 conversation.append((question, answer))
+                if answer is None:
+                    st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+                    conversation.append((question, "Unknown"))
+                else:
+                    st.write(answer)
+                    conversation.append((question, answer))
+                 else:
+                    answer = None
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
