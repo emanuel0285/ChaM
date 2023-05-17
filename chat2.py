@@ -93,14 +93,14 @@ def run_chatbot():
                 conversation.append((question, "Report Generated"))
             else:
                 answer = get_answer(question)
-                if answer is None:
-                    st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-                    conversation.append((question, "Unknown"))
-                else:
-                    st.write(answer)
-                    conversation.append((question, answer))
-                 else:
-                    answer = None
+            if answer is None:
+               st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+               conversation.append((question, "Unknown"))
+            else:
+               st.write(answer)
+               conversation.append((question, answer))
+             else:
+               answer = None
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
