@@ -96,7 +96,7 @@ def run_chatbot():
             if answer is not None:
                st.write(answer)
                conversation.append((question, answer))
-             else:
+            else:
                default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
                st.write(default_answer)
                conversation.append((question, default_answer))
