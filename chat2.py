@@ -97,7 +97,7 @@ def run_chatbot():
                 # Find the question in the dataset
                 match = data[data['Question'].str.lower() == question.lower()]
 
-                if not match.empty:
+                 if not match.empty:
                     # Get the answer from the dataset
                     answer = match.iloc[0]['Answer']
                     st.write(answer)
@@ -105,7 +105,7 @@ def run_chatbot():
                 else:
                     st.write(default_answer)
                     conversation.append((question, default_answer))
-                    answer = default_answer
+                    answer = None
                     
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
