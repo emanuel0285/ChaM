@@ -81,9 +81,6 @@ def run_chatbot():
         question = st.text_input(">", key=f"{form_key}-input")
         form_submit = st.form_submit_button("Submit")
 
-        # Define the default answer
-        default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
-
         if form_submit:
             if question.lower() in ['help', 'h']:
                 display_help()
@@ -91,9 +88,7 @@ def run_chatbot():
             elif question.lower() in ['exit', 'e']:
                 st.write("Goodbye!")
                 conversation.append((question, "Goodbye"))
-            elif question.lower() in ['report', 'r']:
-                generate_report()
-                conversation.append((question, "Report Generated"))
+
             else:
                 # Find the question in the dataset
                 match = data[data['Question'].str.lower() == question.lower()]
