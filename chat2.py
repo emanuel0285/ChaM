@@ -100,9 +100,7 @@ def run_chatbot():
                     st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
                     conversation.append((question, "Unknown")
                     
-    with open("chatbot_conversation.txt", "w") as file:
-        for q, a in conversation:
-            file.write(f"{q}\t{a}\n")
+   
 
 # Define a function to display the help message
 def display_help():
