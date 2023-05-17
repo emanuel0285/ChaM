@@ -95,7 +95,7 @@ def run_chatbot():
                 conversation.append((question, "Report Generated"))
             else:
                 # Find the question in the dataset
-                match = data[data['Question'].str.lower() == question.lower()]
+                match = data[data['question'].str.lower() == question.lower()]
 
                 if len(match) == 0:
                     st.write(default_answer)
