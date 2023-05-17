@@ -92,7 +92,7 @@ def run_chatbot():
                 generate_report()
                 conversation.append((question, "Report Generated"))
             else:
-                if answer == "Not Found":
+                    if answer == "Not Found":
                         st.write("Sorry, the question you asked is not in my database. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
                         conversation.append((question, "Not Found"))
                     else:
