@@ -99,8 +99,6 @@ def run_chatbot():
 
                 if len(match) == 0:
                     st.write(default_answer)
-                    conversation.append((question, default_answer))
-                    answer = default_answer
                 else:
                     st.write(answer)
                     conversation.append((question, answer))
