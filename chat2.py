@@ -55,6 +55,21 @@ def get_answer(question):
     idx = sim_scores.argmax()
     # Return the corresponding answer
     return data.iloc[idx]['Answer']
+# Define a function to generate and present the report
+def generate_report():
+    # Perform necessary calculations or queries to generate the report
+    # This is just a placeholder example
+    report_data = {
+        "Report Name": "AI Chatbot Report",
+        "Total Questions": len(data),
+        "Unique Answers": data["Answer"].nunique()
+    }
+
+    # Present the report
+    st.write("Generated Report:")
+    st.write("Report Name:", report_data["Report Name"])
+    st.write("Total Questions:", report_data["Total Questions"])
+    st.write("Unique Answers:", report_data["Unique Answers"])
 
 # Define a function to run the chatbot
 def run_chatbot():
@@ -73,6 +88,9 @@ def run_chatbot():
             elif question.lower() in ['exit', 'e']:
                 st.write("Goodbye!")
                 conversation.append((question, "Goodbye"))
+            elif question.lower() in ['report', 'r']:
+                generate_report()
+                conversation.append((question, "Report Generated"))
             else:
                 answer = get_answer(question)
                 if answer is None:
