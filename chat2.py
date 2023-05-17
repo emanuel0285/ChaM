@@ -75,14 +75,14 @@ def generate_report():
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
-    
-# Define the default answer
-    default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
-      
+
     form_key = 'question-form'
     with st.form(key=form_key):
         question = st.text_input(">", key=f"{form_key}-input")
         form_submit = st.form_submit_button("Submit")
+
+        # Define the default answer
+        default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
 
         if form_submit:
             if question.lower() in ['help', 'h']:
