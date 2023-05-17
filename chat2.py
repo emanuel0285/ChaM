@@ -15,8 +15,6 @@ import seaborn as sns
 
 # Load data from CSV file
 data = pd.read_csv("AI.csv")
-# Define the default answer
-default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
 
 # Define a function to clean the text data
 def clean_text(text):
@@ -96,11 +94,12 @@ def run_chatbot():
             else:
                 answer = get_answer(question)
             if answer is not None:
-                st.write(answer)
-                conversation.append((question, answer))
+               st.write(answer)
+               conversation.append((question, answer))
             else:
-                st.write(default_answer)
-                conversation.append((question, default_answer))
+               default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
+               st.write(default_answer)
+               conversation.append((question, default_answer))
                
                     
     with open("chatbot_conversation.txt", "w") as file:
