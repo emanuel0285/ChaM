@@ -95,10 +95,7 @@ def run_chatbot():
                 answer = get_answer(question)
                 if answer is None:
                     st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-                    conversation.append((question, "Unknown"))
-                elif answer == "Not Found":
-                    st.write("Sorry, the question you asked is not in my database. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
-                    conversation.append((question, "Not Found"))
+                    conversation.append((question, "Unknown")
                 else:
                     st.write(answer)
                     conversation.append((question, answer))
