@@ -96,7 +96,6 @@ def run_chatbot():
                 if answer:
                     st.write(answer)
                     conversation.append((question, answer))
-                
                 else:
                     st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
                     conversation.append((question, "Unknown")
