@@ -92,6 +92,11 @@ def run_chatbot():
                 generate_report()
                 conversation.append((question, "Report Generated"))
             else:
+                answer = get_answer(question)
+                if answer is None:
+                    st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+                    conversation.append((question, "Unknown"))
+                else:
                     if answer == "Not Found":
                         st.write("Sorry, the question you asked is not in my database. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
                         conversation.append((question, "Not Found"))
