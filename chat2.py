@@ -75,6 +75,9 @@ def generate_report():
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
+    
+# Define the default answer
+        default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
 
     form_key = 'question-form'
     with st.form(key=form_key):
@@ -104,6 +107,7 @@ def run_chatbot():
                     answer = match.iloc[0]['answer']
                     st.write(answer)
                     conversation.append((question, answer))
+                    
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
             file.write(f"{q}\t{a}\n")
