@@ -94,18 +94,12 @@ def run_chatbot():
                 generate_report()
                 conversation.append((question, "Report Generated"))
             else:
-                # Find the question in the dataset
-                match = data[data['Question'].str.lower() == question.lower()]
-
-            if not match.empty:
-                # Get the answer from the dataset
-                answer = match.iloc[0]['Answer']
-                st.write(answer)
-                conversation.append((question, answer))
+            if answer is None
+               st.write(default_answer)
+               conversation.append((question, default_answer))
             else:
-                st.write(default_answer)
-                conversation.append((question, default_answer))
-                answer = None
+               st.write(answer)
+               conversation.append((question, answer))
                     
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
