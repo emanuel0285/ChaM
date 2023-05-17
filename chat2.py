@@ -99,8 +99,8 @@ def run_chatbot():
             else:
                st.write(answer)
                conversation.append((question, answer))
-            else:
-               answer = None
+         else:
+             answer = None
 
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
