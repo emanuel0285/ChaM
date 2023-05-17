@@ -92,14 +92,16 @@ def run_chatbot():
                 generate_report()
                 conversation.append((question, "Report Generated"))
             else:
-                answ = get_answer(question)
-            if answ is not None:
-                st.write(answ)
-                conversation.append((question, answ))
-            else:
-                default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
-                st.write(default_answer)
-                conversation.append((question, default_answer))
+                answer = get_answer(question)
+                if answer is None:
+                    st.write("Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+                    conversation.append((question, "Unknown"))
+                elif answer == "Not Found":
+                    st.write("Sorry, the question you asked is not in my database. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit.")
+                    conversation.append((question, "Not Found"))
+                else:
+                    st.write(answer)
+                    conversation.append((question, answer))
                     
     with open("chatbot_conversation.txt", "w") as file:
         for q, a in conversation:
