@@ -93,10 +93,11 @@ def run_chatbot():
             elif question.lower() in ['report', 'r']:
                 generate_report()
                 conversation.append((question, "Report Generated"))
-            elif answer = get_answer(question)
-            st.write(answer)
-               conversation.append((question, answer))
-          
+            else:
+                answer = get_answer(question)
+            if answer is not None:
+                st.write(answer)
+                conversation.append((question, answer))
             else:
                 st.write(default_answer)
                 conversation.append((question, default_answer))
