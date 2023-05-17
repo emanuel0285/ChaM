@@ -77,8 +77,8 @@ def run_chatbot():
     conversation = []
     
 # Define the default answer
-        default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
-
+    default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
+      
     form_key = 'question-form'
     with st.form(key=form_key):
         question = st.text_input(">", key=f"{form_key}-input")
