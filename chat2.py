@@ -110,6 +110,7 @@ def display_help():
     st.write("1. Ask me a question, and I'll try my best to answer it.")
     st.write("2. Type 'help' or 'h' to see this message again.")
     st.write("3. Type 'exit' or 'e' to quit.")
+    st.write("4. Type 'report' or 'r' to see the report.")
 
 
 run_chatbot()
