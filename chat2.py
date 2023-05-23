@@ -50,9 +50,6 @@ def get_answer(question):
     # Return the corresponding answer
     return data.iloc[idx]['Answer']
 
-# Define the conversation variable
-conversation = []
-
 # Define a function to generate and present the report
 def generate_report():
     # Perform necessary calculations or queries to generate the report
@@ -61,12 +58,6 @@ def generate_report():
         "Report Name": "AI Chatbot Report",
         "Total Questions": len(data),
         "Unique Answers": data["Answer"].nunique(),
-        "Usage Report": {
-            # Add usage report data
-            "Total Conversations": len(conversation),
-            "Most Recent Conversations": conversation[-5:][::-1]
-        }
-        
         "Performance Report": {
             # Add performance report data
         },
@@ -95,7 +86,6 @@ def generate_report():
     st.write("Report Name:", report_data["Report Name"])
     st.write("Total Questions:", report_data["Total Questions"])
     st.write("Unique Answers:", report_data["Unique Answers"])
-    st.write("Usage Report:", report_data["Usage Report"])
     st.write("Performance Report:", report_data["Performance Report"])
     st.write("Error Report:", report_data["Error Report"])
     st.write("User Feedback Report:", report_data["User Feedback Report"])
@@ -104,10 +94,10 @@ def generate_report():
     st.write("Performance Comparison Report:", report_data["Performance Comparison Report"])
     st.write("Conversational Flow Report:", report_data["Conversational Flow Report"])
 
-
 # Define a function to run the chatbot
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
+    conversation = []
 
     form_key = 'question-form'
     with st.form(key=form_key):
