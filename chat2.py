@@ -75,6 +75,14 @@ def generate_report():
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
+    usage_stats = {
+        'Total Questions': 0,
+        'Help Requests': 0,
+        'Exit Requests': 0,
+        'Report Requests': 0,
+        'Other Questions': 0,
+        # Add more statistics as needed
+    }
 
     form_key = 'question-form'
     with st.form(key=form_key):
@@ -82,15 +90,20 @@ def run_chatbot():
         form_submit = st.form_submit_button("Submit")
 
         if form_submit:
+            usage_stats['Total Questions'] += 1
+
             if question.lower() in ['help', 'h']:
                 display_help()
                 conversation.append((question, "Help"))
+                usage_stats['Help Requests'] += 1
             elif question.lower() in ['exit', 'e']:
                 st.write("Goodbye!")
                 conversation.append((question, "Goodbye"))
+                usage_stats['Exit Requests'] += 1
             elif question.lower() in ['report', 'r']:
-                display_usage_report()  # Added line
-                conversation.append((question, "Usage Report"))  # Modified line
+                display_usage_report(usage_stats)
+                conversation.append((question, "Usage Report"))
+                usage_stats['Report Requests'] += 1
             else:
                 answer = get_answer(question)
                 if answer:
@@ -100,12 +113,19 @@ def run_chatbot():
                     default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
                     st.write(default_answer)
                     conversation.append((question, "Unknown"))
+                    usage_stats['Other Questions'] += 1
 
-# Added function
-def display_usage_report():
-    # Code to display the usage report goes here
+def display_usage_report(usage_stats):
     st.write("Usage Report:")
-    # Additional code to display the usage report
+    st.write("Total Questions:", usage_stats['Total Questions'])
+    st.write("Help Requests:", usage_stats['Help Requests'])
+    st.write("Exit Requests:", usage_stats['Exit Requests'])
+    st.write("Report Requests:", usage_stats['Report Requests'])
+    st.write("Other Questions:", usage_stats['Other Questions'])
+    
+
+
+run_chatbot()
                
 # Define a function to display the help message
 def display_help():
