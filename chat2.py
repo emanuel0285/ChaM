@@ -50,6 +50,9 @@ def get_answer(question):
     # Return the corresponding answer
     return data.iloc[idx]['Answer']
 
+# Define the conversation variable
+conversation = []
+
 # Define a function to generate and present the report
 def generate_report():
     # Perform necessary calculations or queries to generate the report
@@ -75,7 +78,6 @@ def generate_report():
 # Define a function to run the chatbot
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
-    conversation = []
 
     form_key = 'question-form'
     with st.form(key=form_key):
