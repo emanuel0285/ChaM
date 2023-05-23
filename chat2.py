@@ -85,7 +85,7 @@ def run_chatbot():
     }
 
     form_key = 'question-form'
-    with st.form(key=form_key):
+    with st.form(key=f"{form_key}-main"):
         question = st.text_input(">", key=f"{form_key}-input")
         form_submit = st.form_submit_button("Submit")
 
@@ -113,7 +113,6 @@ def run_chatbot():
                     default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
                     st.write(default_answer)
                     conversation.append((question, "Unknown"))
-                    usage_stats['Other Questions'] += 1
 
 def display_usage_report(usage_stats):
     st.write("Usage Report:")
