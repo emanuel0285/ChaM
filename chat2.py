@@ -84,9 +84,9 @@ def run_chatbot():
         # Add more statistics as needed
     }
 
-    form_key = 'question-form'
-    with st.form(key=f"{form_key}-main"):
-        question = st.text_input(">", key=f"{form_key}-input")
+    main_form_key = 'question-form-main'
+    with st.form(key=main_form_key):
+        question = st.text_input(">", key=f"{main_form_key}-input")
         form_submit = st.form_submit_button("Submit")
 
         if form_submit:
