@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import streamlit as st
 import pandas as pd
 import re
@@ -55,6 +49,7 @@ def get_answer(question):
     idx = sim_scores.argmax()
     # Return the corresponding answer
     return data.iloc[idx]['Answer']
+
 # Define a function to generate and present the report
 def generate_report():
     # Perform necessary calculations or queries to generate the report
@@ -62,7 +57,28 @@ def generate_report():
     report_data = {
         "Report Name": "AI Chatbot Report",
         "Total Questions": len(data),
-        "Unique Answers": data["Answer"].nunique()
+        "Unique Answers": data["Answer"].nunique(),
+        "Performance Report": {
+            # Add performance report data
+        },
+        "Error Report": {
+            # Add error report data
+        },
+        "User Feedback Report": {
+            # Add user feedback report data
+        },
+        "Trend Analysis Report": {
+            # Add trend analysis report data
+        },
+        "Knowledge Gap Report": {
+            # Add knowledge gap report data
+        },
+        "Performance Comparison Report": {
+            # Add performance comparison report data
+        },
+        "Conversational Flow Report": {
+            # Add conversational flow report data
+        }
     }
 
     # Present the report
@@ -70,40 +86,34 @@ def generate_report():
     st.write("Report Name:", report_data["Report Name"])
     st.write("Total Questions:", report_data["Total Questions"])
     st.write("Unique Answers:", report_data["Unique Answers"])
+    st.write("Performance Report:", report_data["Performance Report"])
+    st.write("Error Report:", report_data["Error Report"])
+    st.write("User Feedback Report:", report_data["User Feedback Report"])
+    st.write("Trend Analysis Report:", report_data["Trend Analysis Report"])
+    st.write("Knowledge Gap Report:", report_data["Knowledge Gap Report"])
+    st.write("Performance Comparison Report:", report_data["Performance Comparison Report"])
+    st.write("Conversational Flow Report:", report_data["Conversational Flow Report"])
 
 # Define a function to run the chatbot
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
     conversation = []
-    usage_stats = {
-        'Total Questions': 0,
-        'Help Requests': 0,
-        'Exit Requests': 0,
-        'Report Requests': 0,
-        'Other Questions': 0,
-        # Add more statistics as needed
-    }
 
-    main_form_key = 'question-form-main'
-    with st.form(key=main_form_key):
-        question = st.text_input(">", key=f"{main_form_key}-input")
+    form_key = 'question-form'
+    with st.form(key=form_key):
+        question = st.text_input(">", key=f"{form_key}-input")
         form_submit = st.form_submit_button("Submit")
 
         if form_submit:
-            usage_stats['Total Questions'] += 1
-
             if question.lower() in ['help', 'h']:
                 display_help()
                 conversation.append((question, "Help"))
-                usage_stats['Help Requests'] += 1
             elif question.lower() in ['exit', 'e']:
                 st.write("Goodbye!")
                 conversation.append((question, "Goodbye"))
-                usage_stats['Exit Requests'] += 1
             elif question.lower() in ['report', 'r']:
-                display_usage_report(usage_stats)
-                conversation.append((question, "Usage Report"))
-                usage_stats['Report Requests'] += 1
+                generate_report()
+                conversation.append((question, "Report Generated"))
             else:
                 answer = get_answer(question)
                 if answer:
@@ -114,18 +124,6 @@ def run_chatbot():
                     st.write(default_answer)
                     conversation.append((question, "Unknown"))
 
-def display_usage_report(usage_stats):
-    st.write("Usage Report:")
-    st.write("Total Questions:", usage_stats['Total Questions'])
-    st.write("Help Requests:", usage_stats['Help Requests'])
-    st.write("Exit Requests:", usage_stats['Exit Requests'])
-    st.write("Report Requests:", usage_stats['Report Requests'])
-    st.write("Other Questions:", usage_stats['Other Questions'])
-    # Add more statistics as needed
-
-# Example usage
-run_chatbot()
-               
 # Define a function to display the help message
 def display_help():
     st.write("I'm a chatbot that can answer your questions. Here are some things you can ask me:")
@@ -133,6 +131,5 @@ def display_help():
     st.write("2. Type 'help' or 'h' to see this message again.")
     st.write("3. Type 'exit' or 'e' to quit.")
     st.write("4. Type 'report' or 'r' to see the report.")
-
 
 run_chatbot()
