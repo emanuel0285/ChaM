@@ -89,8 +89,8 @@ def run_chatbot():
                 st.write("Goodbye!")
                 conversation.append((question, "Goodbye"))
             elif question.lower() in ['report', 'r']:
-                generate_report()
-                conversation.append((question, "Report Generated"))
+                display_usage_report()  # Added line
+                conversation.append((question, "Usage Report"))  # Modified line
             else:
                 answer = get_answer(question)
                 if answer:
@@ -100,6 +100,12 @@ def run_chatbot():
                     default_answer = "Sorry, I don't understand. Do you need help? Type 'help' or 'h' for more information. Type 'exit' or 'e' to quit."
                     st.write(default_answer)
                     conversation.append((question, "Unknown"))
+
+# Added function
+def display_usage_report():
+    # Code to display the usage report goes here
+    st.write("Usage Report:")
+    # Additional code to display the usage report
                
 # Define a function to display the help message
 def display_help():
