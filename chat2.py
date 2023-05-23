@@ -66,6 +66,7 @@ def generate_report():
             "Total Conversations": len(conversation),
             "Most Recent Conversations": conversation[-5:][::-1]
         }
+        
         "Performance Report": {
             # Add performance report data
         },
