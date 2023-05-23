@@ -122,9 +122,9 @@ def display_usage_report(usage_stats):
     st.write("Exit Requests:", usage_stats['Exit Requests'])
     st.write("Report Requests:", usage_stats['Report Requests'])
     st.write("Other Questions:", usage_stats['Other Questions'])
-    
+    # Add more statistics as needed
 
-
+# Example usage
 run_chatbot()
                
 # Define a function to display the help message
