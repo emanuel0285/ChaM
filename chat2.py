@@ -66,6 +66,27 @@ def generate_report():
             "Total Conversations": len(conversation),
             "Most Recent Conversations": conversation[-5:][::-1]
         }
+        "Performance Report": {
+            # Add performance report data
+        },
+        "Error Report": {
+            # Add error report data
+        },
+        "User Feedback Report": {
+            # Add user feedback report data
+        },
+        "Trend Analysis Report": {
+            # Add trend analysis report data
+        },
+        "Knowledge Gap Report": {
+            # Add knowledge gap report data
+        },
+        "Performance Comparison Report": {
+            # Add performance comparison report data
+        },
+        "Conversational Flow Report": {
+            # Add conversational flow report data
+        }
     }
 
     # Present the report
@@ -74,6 +95,14 @@ def generate_report():
     st.write("Total Questions:", report_data["Total Questions"])
     st.write("Unique Answers:", report_data["Unique Answers"])
     st.write("Usage Report:", report_data["Usage Report"])
+    st.write("Performance Report:", report_data["Performance Report"])
+    st.write("Error Report:", report_data["Error Report"])
+    st.write("User Feedback Report:", report_data["User Feedback Report"])
+    st.write("Trend Analysis Report:", report_data["Trend Analysis Report"])
+    st.write("Knowledge Gap Report:", report_data["Knowledge Gap Report"])
+    st.write("Performance Comparison Report:", report_data["Performance Comparison Report"])
+    st.write("Conversational Flow Report:", report_data["Conversational Flow Report"])
+
 
 # Define a function to run the chatbot
 def run_chatbot():
