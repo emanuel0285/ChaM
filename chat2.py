@@ -102,10 +102,6 @@ def generate_report():
     answer_counts = data["Answer"].value_counts()
     st.bar_chart(answer_counts)
     
-     # save the conversation to a file
-    with open("chatbot_conversation.txt", "w") as file:
-        for q, a in conversation:
-            file.write(f"{q}\t{a}\n")
 # Define a function to run the chatbot
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
@@ -144,4 +140,8 @@ def display_help():
     st.write("3. Type 'exit' or 'e' to quit.")
     st.write("4. Type 'report' or 'r' to see the report.")
 
+     # save the conversation to a file
+    with open("chatbot_conversation.txt", "w") as file:
+        for q, a in conversation:
+            file.write(f"{q}\t{a}\n")
 run_chatbot()
