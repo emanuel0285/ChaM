@@ -97,7 +97,11 @@ def generate_report():
     st.write("Data Exploration:")
     st.write("Top 5 Questions:")
     st.table(data.head())
-
+    st.write("Data Shape:", data.shape)
+    st.write("Data Types:")
+    st.write(data.dtypes)
+    st.write("Unique Values in 'Answer' Column:")
+    st.write(data['Answer'].unique())
     st.write("Distribution of Answers:")
     answer_counts = data["Answer"].value_counts()
     st.bar_chart(answer_counts)
