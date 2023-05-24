@@ -93,7 +93,14 @@ def generate_report():
     st.write("Knowledge Gap Report:", report_data["Knowledge Gap Report"])
     st.write("Performance Comparison Report:", report_data["Performance Comparison Report"])
     st.write("Conversational Flow Report:", report_data["Conversational Flow Report"])
+# Data Exploration and Visualization
+    st.write("Data Exploration:")
+    st.write("Top 5 Questions:")
+    st.table(data.head())
 
+    st.write("Distribution of Answers:")
+    answer_counts = data["Answer"].value_counts()
+    st.bar_chart(answer_counts)
 # Define a function to run the chatbot
 def run_chatbot():
     st.write("Hi, I'm a chatbot. How can I help you?")
